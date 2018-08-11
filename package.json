@@ -1,0 +1,25 @@
+{
+  "name": "sproxy",
+  "version": "1.0.0",
+  "description": "Proxy Server for redirecting data from request to another server for sake of security and used during server side whitelisting",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bismay4u/sproxy.git"
+  },
+  "keywords": [
+    "proxy",
+    "server",
+    "reverse",
+    "proxy"
+  ],
+  "author": "Bismay",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bismay4u/sproxy/issues"
+  },
+  "homepage": "https://github.com/bismay4u/sproxy#readme"
+}
