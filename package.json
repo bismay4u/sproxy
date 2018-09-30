@@ -1,5 +1,6 @@
 {
   "name": "sproxy",
+  "title": "SProxy Server",
   "version": "1.0.0",
   "description": "Proxy Server for redirecting data from request to another server for sake of security and used during server side whitelisting",
   "main": "index.js",
@@ -21,5 +22,12 @@
   "bugs": {
     "url": "https://github.com/bismay4u/sproxy/issues"
   },
-  "homepage": "https://github.com/bismay4u/sproxy#readme"
+  "homepage": "https://github.com/bismay4u/sproxy#readme",
+  "dependencies": {
+    "lodash": "^4.17.11",
+    "moment": "^2.22.2",
+    "restify": "^7.2.1",
+    "restify-errors": "^6.1.1",
+    "restify-plugins": "^1.6.0"
+  }
 }
