@@ -5,9 +5,8 @@ module.exports = {
 	version: packageConfig.version,
 	packageid: packageConfig.name,
 	env: process.env.NODE_ENV || 'development',
-	port: process.env.PORT || 9090,
-	data_folder: "./mockdata/",
-	base_url: process.env.BASE_URL || 'http://localhost:9000',
+	port: process.env.PORT || 9010,
+	base_url: process.env.BASE_URL || 'http://localhost:9010',
 	cache : {
 		host: '127.0.0.1',   // Redis host
 		port: 6379,          // Redis port
@@ -25,5 +24,13 @@ module.exports = {
 				rate: 0    // unlimited
 			}
 		}
-	}
+	},
+	default_request_params: {
+        method: 'GET',
+        url: 'http://127.0.0.1',
+        headers: {},
+        timeout: 1500,
+        gzip: true,
+        use_response_headers: false
+    }
 };

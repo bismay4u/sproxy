@@ -1,6 +1,5 @@
 module.exports = {
     "test1":{
-        "URL":"",
-        "headers":false
+        "url":"http://localhost/"
     }
 }
