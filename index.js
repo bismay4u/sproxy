@@ -216,6 +216,8 @@ function processProxyRequest(type, path, req, res, next) {
         // console.log(response.statusCode) // 200
         // console.log(response.headers['content-type']); // 'image/png'
         // console.log('Response:', body);
+        
+        if(typeof body == "object") body = JSON.stringify(body);
 
         if(optsFinal.use_response_headers) {
             res.sendRaw(response.statusCode, body, response.headers);
