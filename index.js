@@ -180,7 +180,10 @@ function processProxyRequest(type, path, req, res, next) {
                         optsFinal.body = postData.join("&");
                     break;
                     case "application/json":
-                        optsFinal.json = JSON.stringify(req.body);
+                        delete optsFinal.headers["content-length"];
+                        optsFinal.body = (req.body);
+                        optsFinal.json = true;
+                        //optsFinal.json = JSON.stringify(req.body);
                     break;
                     case "application/xml":
                         optsFinal.body = req.body;
