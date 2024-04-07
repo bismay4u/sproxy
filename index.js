@@ -70,8 +70,9 @@ server.use(restify.plugins.throttle( config.throttle ));
 server.use(restify.plugins.bodyParser({ mapParams: false }));
 
 //Landing Page
-server.get('/', (req, res) => {
+server.get('/', (req, res, next) => {
     res.sendRaw('Welcome to '+server.config.name);
+    return next();
 })
 
 //With ProxyKEY
