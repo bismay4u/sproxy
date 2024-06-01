@@ -1,5 +1,8 @@
 module.exports = {
-    "test1":{
-        "url":"http://localhost/"
+    "test": {
+        "url":"https://test.com",
+        "headers":{
+            "Authorization":"Bearer test"
+        }
     }
 }

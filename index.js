@@ -69,6 +69,28 @@ server.use(restify.plugins.throttle( config.throttle ));
 
 server.use(restify.plugins.bodyParser({ mapParams: false }));
 
+server.use(function(req, res, next) {
+    // console.log("XXXXX", req.headers.origin);
+    res.header('Access-Control-Allow-Origin', config.cors_sites);//req.headers.origin
+
+    if(req.method.toUpperCase()=="OPTIONS") {
+        var allowHeaders = ['Accept', 'Accept-Version', 'Content-Type', 
+            'Api-Version', 'Origin', 'X-Requested-With', 
+            'x-data-hash', 'authorization', 'auth-token'];
+
+        res.header('Access-Control-Allow-Credentials', true);
+        res.header('Access-Control-Allow-Headers', allowHeaders.join(', '));
+        res.header('Access-Control-Allow-Methods', "GET, POST, OPTIONS, OPTION, PUT, DELETE, AUTHORIZATION");
+
+        // res.header("Access-Control-Allow-Origin", "*");
+        // res.header("Access-Control-Allow-Methods", req.header("Access-Control-Request-Method"));
+        // res.header("Access-Control-Allow-Headers", req.header("Access-Control-Request-Headers"));
+        
+        return res.send(204);
+    }
+    return next();
+}); 
+
 //Landing Page
 server.get('/', (req, res, next) => {
     res.sendRaw('Welcome to '+server.config.name);
@@ -181,10 +203,7 @@ function processProxyRequest(type, path, req, res, next) {
                         optsFinal.body = postData.join("&");
                     break;
                     case "application/json":
-                        delete optsFinal.headers["content-length"];
-                        optsFinal.body = (req.body);
-                        optsFinal.json = true;
-                        //optsFinal.json = JSON.stringify(req.body);
+                        optsFinal.json = JSON.stringify(req.body);
                     break;
                     case "application/xml":
                         optsFinal.body = req.body;
@@ -220,13 +239,6 @@ function processProxyRequest(type, path, req, res, next) {
         // console.log(response.statusCode) // 200
         // console.log(response.headers['content-type']); // 'image/png'
         // console.log('Response:', body);
-        
-        try {
-            if(typeof body == "object") body = JSON.stringify(body);
-        } catch(e) {
-            console.error(e);
-            body = "{}";
-        }
 
         if(optsFinal.use_response_headers) {
             res.sendRaw(response.statusCode, body, response.headers);

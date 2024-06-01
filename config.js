@@ -7,6 +7,7 @@ module.exports = {
 	env: process.env.NODE_ENV || 'development',
 	port: process.env.PORT || 9010,
 	base_url: process.env.BASE_URL || 'http://localhost:9010',
+	cors_sites: "*",
 	cache : {
 		host: '127.0.0.1',   // Redis host
 		port: 6379,          // Redis port
